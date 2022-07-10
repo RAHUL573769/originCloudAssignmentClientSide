@@ -5,6 +5,9 @@ const Headers = () => {
   const menuItems = (
     <>
       <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
         <Link to="/registration">User Registration</Link>
       </li>
 

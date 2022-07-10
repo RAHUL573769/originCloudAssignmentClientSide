@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+import Home from "./Componenets/HomePage/Home";
+
 function App() {
   return (
-    <div >
-
+    <div>
+      <Home></Home>
     </div>
   );
 }

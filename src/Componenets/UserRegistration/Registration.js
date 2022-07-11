@@ -5,6 +5,8 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import Loading from "../Shared/Loading";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -17,7 +19,7 @@ const Registration = () => {
     handleSubmit,
   } = useForm();
 
-  if (user) {
+  if (user || user1) {
     console.log(user);
   }
   const onSubmit = (data) => {
@@ -26,7 +28,7 @@ const Registration = () => {
 
   let errorMessage;
   if (loading || loading1) {
-    return <button class="btn loading">loading</button>;
+    return <Loading></Loading>;
   }
   if (error || error1) {
     errorMessage = (
@@ -110,6 +112,12 @@ const Registration = () => {
               value="Login"
             />
           </form>
+          <p>
+            New to Origin Cloud Technologies?{" "}
+            <Link to="/register" className="text-primary">
+              Create A New Account?
+            </Link>
+          </p>
           <div class="flex flex-col w-full border-opacity-50">
             <div class="divider">OR</div>
             <button onClick={() => signInWithGoogle()} class="btn btn-outline">

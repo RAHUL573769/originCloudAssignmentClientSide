@@ -1,5 +1,8 @@
 import React, { useRef } from "react";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AddProjects = () => {
   const nameRef = useRef();
   const descriptionRef = useRef();
@@ -34,7 +37,7 @@ const AddProjects = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // toast("Todo Task Added Succesfully");
+        toast("Products  Added Successfully");
       });
   };
   return (
@@ -78,6 +81,7 @@ const AddProjects = () => {
             <button onClick={handleProjects} class="btn btn-primary">
               Click To Add Projects
             </button>
+            <ToastContainer />
           </div>
         </div>
       </div>

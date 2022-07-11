@@ -15,6 +15,27 @@ const AddProjects = () => {
     const categories = categoriesRef.current.value;
 
     console.log(name, description, start, end, categories);
+
+    const finalData = {
+      name: name,
+      description: description,
+      start: start,
+      end: end,
+      categories: categories,
+    };
+
+    fetch("http://localhost:5000/projects", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // toast("Todo Task Added Succesfully");
+      });
   };
   return (
     <div class="h-screen flex  justify-center items-center">

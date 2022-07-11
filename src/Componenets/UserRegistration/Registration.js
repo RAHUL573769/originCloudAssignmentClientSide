@@ -1,10 +1,16 @@
 import React from "react";
 import auth from "../Firebase/FirebaseInit";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 
 const Registration = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword, user1, loading1, error1] =
+    useSignInWithEmailAndPassword(auth);
   const {
     register,
     formState: { errors },
@@ -14,8 +20,19 @@ const Registration = () => {
   if (user) {
     console.log(user);
   }
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  };
 
+  let errorMessage;
+  if (loading || loading1) {
+    return <button class="btn loading">loading</button>;
+  }
+  if (error || error1) {
+    errorMessage = (
+      <p className="text-red-500">{error?.message || error1?.message}</p>
+    );
+  }
   return (
     <div className="flex h-screen justify-center items-center">
       <div class="card w-96 bg-base-100 shadow-xl">
@@ -86,8 +103,12 @@ const Registration = () => {
                 )}
               </label>
             </div>
-
-            <input type="submit" />
+            {errorMessage}
+            <input
+              className="btn w-full max-w-xs text-white"
+              type="submit"
+              value="Login"
+            />
           </form>
           <div class="flex flex-col w-full border-opacity-50">
             <div class="divider">OR</div>

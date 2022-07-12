@@ -1,18 +1,22 @@
 import React from "react";
 
 import auth from "../Firebase/FirebaseInit";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-
+  const [updateProfile, updating, error3] = useUpdateProfile(auth);
   const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -22,15 +26,17 @@ const SignUp = () => {
   if (user || user1) {
     console.log(user);
   }
-  const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    navigate("/about");
   };
 
   let errorMessage;
-  if (loading || loading1) {
+  if (loading || loading1 || updating) {
     return <Loading></Loading>;
   }
-  if (error || error1) {
+  if (error || error1 || error3) {
     errorMessage = (
       <p className="text-red-500">{error?.message || error1?.message}</p>
     );

@@ -1,20 +1,35 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../Firebase/FirebaseInit";
 
 const Headers = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
+
   const menuItems = (
     <>
       <li>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/registration">User Login</Link>
-      </li>
+
       <li>
         <Link to="/addProjects">Add Projects</Link>
       </li>
       <li>
         <Link to="/viewProjects">View Projects</Link>
+      </li>
+      <li>
+        {user ? (
+          <button onClick={logout} class="btn btn-primary">
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/registration">User Login</Link>
+        )}
       </li>
 
       {/* <li>

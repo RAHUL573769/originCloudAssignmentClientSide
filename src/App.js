@@ -5,6 +5,7 @@ import About from "./Componenets/About/About";
 import SignUp from "./Componenets/SignIn/SignUp";
 import AddProjects from "./Componenets/AddProjects/AddProjects";
 import Projects from "./Componenets/ViewProjects/Projects";
+import RequiedAuth from "./Componenets/RequiedAuth";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
           element={<Registration></Registration>}
         ></Route>
 
-        <Route path="/about" element={<About></About>}></Route>
+        <Route
+          path="/about"
+          element={
+            <RequiedAuth>
+              <About></About>
+            </RequiedAuth>
+          }
+        ></Route>
         <Route path="/viewProjects" element={<Projects></Projects>}></Route>
         <Route
           path="/addProjects"

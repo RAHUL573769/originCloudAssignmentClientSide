@@ -15,6 +15,12 @@ const Headers = () => {
       <li>
         <Link to="/about">About</Link>
       </li>
+      <li>
+        <Link to="/profile">User Profile</Link>
+      </li>
+      <li>
+        <Link to="/view">User Profile View</Link>
+      </li>
 
       <li>
         <Link to="/addProjects">Add Projects</Link>

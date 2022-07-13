@@ -13,7 +13,7 @@ const Projects = () => {
   return (
     <div class="grid  md:grid-cols-2 lg:grid-cols-3 my-7 mx-4 ">
       {projects.map((project) => (
-        <SingleProjects project={project}></SingleProjects>
+        <SingleProjects key={project._id} project={project}></SingleProjects>
       ))}
     </div>
   );

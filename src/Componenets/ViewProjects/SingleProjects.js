@@ -5,7 +5,6 @@ const SingleProjects = ({ project }) => {
     <div>
       <div class="card w-96 bg-base-100 shadow-xl">
         <div class="card-body">
-          {console.log(project)}
           <h2 class="card-title">{project.name}</h2>
           <p>Description:{project.description}</p>
           <p>Start Date:{project.start}</p>

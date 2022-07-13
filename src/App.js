@@ -7,6 +7,7 @@ import AddProjects from "./Componenets/AddProjects/AddProjects";
 import Projects from "./Componenets/ViewProjects/Projects";
 import RequiedAuth from "./Componenets/RequiedAuth";
 import Profile from "./Componenets/UserProfile/Profile";
+import Profiles from "./Componenets/ViewProfile/Profiles";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         ></Route>
         <Route path="/register" element={<SignUp></SignUp>}></Route>
         <Route path="/profile" element={<Profile></Profile>}></Route>
+        <Route path="/view" element={<Profiles></Profiles>}></Route>
       </Routes>
     </div>
   );

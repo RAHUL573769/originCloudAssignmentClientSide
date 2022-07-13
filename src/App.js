@@ -8,11 +8,13 @@ import Projects from "./Componenets/ViewProjects/Projects";
 import RequiedAuth from "./Componenets/RequiedAuth";
 import Profile from "./Componenets/UserProfile/Profile";
 import Profiles from "./Componenets/ViewProfile/Profiles";
+import Footer from "./Componenets/Shared/Footer";
+import Headers from "./Componenets/Header/Headers";
 
 function App() {
   return (
     <div>
-      <Home></Home>
+      <Headers></Headers>
       <Routes>
         <Route
           path="/registration"
@@ -32,10 +34,14 @@ function App() {
           path="/addProjects"
           element={<AddProjects></AddProjects>}
         ></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/" element={<Home></Home>}></Route>
         <Route path="/register" element={<SignUp></SignUp>}></Route>
         <Route path="/profile" element={<Profile></Profile>}></Route>
         <Route path="/view" element={<Profiles></Profiles>}></Route>
       </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }

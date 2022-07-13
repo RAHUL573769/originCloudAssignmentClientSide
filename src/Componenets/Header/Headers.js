@@ -75,7 +75,7 @@ const Headers = () => {
             href="https://www.zaubacorp.com/company/ORIGIN-CLOUD-TECHNOLOGIES-PRIVATE-LIMITED/U72200TG2019PTC135732#:~:text=Origin%20Cloud%20Technologies%20Private%20Limited%20is%20a%20Private%20incorporated%20on,paid%20up%20capital%20is%20Rs."
             class="btn btn-ghost normal-case text-xl"
           >
-            Origin Cloud Technologies Private Limited
+            Origin Cloud Technologies
           </a>
         </div>
         <div class="navbar-center hidden lg:flex">

@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const profileRef = useRef();
@@ -13,7 +15,7 @@ const Profile = () => {
     const phone = phoneRef.current.value;
     const birth = birthRef.current.value;
 
-    console.log(profile, email, city, phone, birth);
+    // console.log(profile, email, city, phone, birth);
 
     const finalData = {
       profile: profile,
@@ -35,7 +37,7 @@ const Profile = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // toast("Products  Added Successfully");
+        toast("User Profile   Added Successfully");
       });
   };
   return (

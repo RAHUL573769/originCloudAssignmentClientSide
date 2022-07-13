@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProjects = ({ project }) => {
   const handleDelete = (_id) => {
@@ -12,7 +14,13 @@ const SingleProjects = ({ project }) => {
         method: "DELETE",
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            console.log(data);
+            window.location.reload();
+            toast("Data Deleted Succesfully");
+          }
+        });
     }
   };
   return (
@@ -31,6 +39,7 @@ const SingleProjects = ({ project }) => {
             >
               Delete
             </button>
+            <ToastContainer />
           </div>
         </div>
       </div>

@@ -1,6 +1,20 @@
 import React from "react";
 
 const SingleProjects = ({ project }) => {
+  const handleDelete = (_id) => {
+    console.log(_id);
+    const proceed = window.confirm("Are you sure you want to Delete?");
+    if (proceed) {
+      const url = `http://localhost:5000/projects/${_id}`;
+      // console.log(url);
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  };
   return (
     <div>
       <div class="card w-96 bg-base-100 shadow-xl">
@@ -11,7 +25,12 @@ const SingleProjects = ({ project }) => {
           <p>End Date:{project.end}</p>
           <p>Categories:{project.categories}</p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <button
+              onClick={() => handleDelete(project._id)}
+              class="btn btn-primary"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
